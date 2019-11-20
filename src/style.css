@@ -1,0 +1,79 @@
+body {
+    background-color: rgb(6, 20, 50);
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#title {
+    margin-top: 15px;
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    font-size: 32px;
+    color: orange;
+    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2) 
+}
+#description {
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2)
+}
+#calculate {
+    width: 100%;
+    align-content: center;
+}
+#my_select {
+    width: 300px;
+    height: 30px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    background: orange;
+    color:  rgb(255, 255, 255);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
+    border: none;
+    outline: none;
+    text-indent: 35%;
+}
+#metric-inputs {
+    align-content: center;
+}
+input[type=text] {
+    padding: 15px;
+    margin: 10px;
+    background: white;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+    outline: none;
+}
+#calculate-bmi {
+    padding: 15px;
+    font-size: 15px;
+    color:  rgb(136, 135, 135);
+    background-color: whitesmoke;
+    margin-top: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2) 
+}
+
+#result {
+    color:  rgb(136, 135, 135);
+    margin-top: 30px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}

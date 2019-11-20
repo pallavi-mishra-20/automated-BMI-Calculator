@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Lato:300,400&display=swap" rel="stylesheet">
+    <script src="person.js"></script>
+    <script src="bmi_calculator.js"></script>
+    <title>BMI Calculator</title>
+</head>
+
+<body>
+
+  <div class="container"></div>
+    <div id="title">BMI Calculator</div>
+    <div id="description">Fill in your details!</div>
+  </div>
+
+  <div class="container">
+      <select class="form-control" id="my_select">
+        <option value="metric">Metric System</option>
+        <option value="imperial">Imperial System</option>
+      </select>
+    </div>
+  </div>
+
+  <form id="calculate">
+    <div class="container" id="metric-inputs">
+      <input type="text" class="form-input" id="weight-in-kgs" placeholder="Weight [kg]">
+      <input type="text" class="form-input" id="height-in-cm" placeholder="Height [cm]">
+    </div>
+
+    <div class="container" id="imperial-inputs">
+      <input type="text" class="form-input" id="weight-in-lbs" placeholder="Weight [lb]">
+      <input type="text" class="form-input" id="height-in-in" placeholder="Height [in]">
+    </div>
+
+  <div class="container">
+    <button type="submit" value="Calculate" id="calculate-bmi"> Calculate </button>
+  </div>
+  </form>
+</div>
+
+  <div class="container" id="result">
+    <span id="display_value"></span>
+    <span id="display_message"></span>
+  </div>
+
+<script type="text/javascript">
+
+        const global = {}
+
+        global.calculateForm = document.querySelector('#calculate');
+        global.displayValueElement = document.querySelector('#display_value');
+        global.displayMessageElement = document.querySelector('#display_message');
+        global.methodSelector = document.querySelector('#my_select');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            global.calculateForm.addEventListener('submit', event => {
+                event.preventDefault();
+                calculateBMI()
+                .then(person => {
+                    global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}&nbsp`;
+                    global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
+                })
+            })
+        });
+        const calculateBMI = () => {
+            var method = global.methodSelector.options[global.methodSelector.selectedIndex].value
+            return new Promise(resolve => {
+
+                let weightFormat = method === 'metric' ? 'weight-in-kgs' : 'weight-in-lbs'
+                let heightFormat = method === 'metric' ? 'height-in-cm' : 'height-in-in'
+
+                let w = parseFloat(document.getElementById(weightFormat).value);
+                let h = parseFloat(document.getElementById(heightFormat).value);
+
+                let person = new Person({
+                    weight: w,
+                    height: h,
+                });
+
+                method === 'metric' ? person.calculate_bmi() : person.calculate_imperial_bmi();
+                resolve(person);
+            })
+        };
+</script>
+
+
+</body>
+
+</html>
